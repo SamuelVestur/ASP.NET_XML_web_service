@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoShow", "WebTest1\AutoShow.csproj", "{937F96B1-F75C-428C-B923-3EF16B415065}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B6C0238C-A61F-453D-AFA7-F7E5E52D74BA}"
+	ProjectSection(SolutionItems) = preProject
+		CelkovéPoznámky_Úlohy.txt = CelkovéPoznámky_Úlohy.txt
+		Poznámky_Metódy.txt = Poznámky_Metódy.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{937F96B1-F75C-428C-B923-3EF16B415065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{937F96B1-F75C-428C-B923-3EF16B415065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{937F96B1-F75C-428C-B923-3EF16B415065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{937F96B1-F75C-428C-B923-3EF16B415065}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {176290B1-DD5A-4807-ACF5-8C145503A828}
+	EndGlobalSection
+EndGlobal

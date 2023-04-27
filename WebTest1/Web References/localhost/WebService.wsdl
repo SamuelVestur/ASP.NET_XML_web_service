@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://microsoft.com/webservices/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://microsoft.com/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/webservices/">
+      <s:element name="addCarToXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="brand" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bodytype" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="yearOfProduction" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="VINNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="color" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="transmission" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fuel" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="mileage" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="price" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="historicalServiceData" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateOfRegistration" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateOfSale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="salePrice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCarToXmlResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ShowAllCars">
+        <s:complexType />
+      </s:element>
+      <s:element name="ShowAllCarsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ShowAllCarsResult" type="tns:ArrayOfCar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Car" nillable="true" type="tns:Car" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Car">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Brand" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Model" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BodyType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Yearofproduction" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="VINNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Transmission" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fuel" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mileage" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Price" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Historicalservicedata" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dateofregistration" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dateofsale" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Saleprice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Profit" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FindCarByVIN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vinNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCarByVINResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindCarByVINResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCarSale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vinNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateOfSale" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="salePrice" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCarSaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateCarSaleResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCarByVin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VINNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCarByVinResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTotalCarsSoldPerYear">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalCarsSoldPerYearResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalCarsSoldPerYearResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FilterByParameters">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="brand" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bodytype" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FilterByParametersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FilterByParametersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSoldAndUnsoldCars">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSoldAndUnsoldCarsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSoldAndUnsoldCarsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUnsoldCars">
+        <s:complexType />
+      </s:element>
+      <s:element name="SaveUnsoldCarsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SearchCarsByPriceRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="from" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="to" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchCarsByPriceRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchCarsByPriceRangeResult" type="tns:ArrayOfXElement" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfXElement">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="XElement" nillable="true">
+            <s:complexType>
+              <s:sequence>
+                <s:any processContents="lax" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CalculationOfProfit">
+        <s:complexType />
+      </s:element>
+      <s:element name="CalculationOfProfitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalculationOfProfitResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="addCarToXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:addCarToXml" />
+  </wsdl:message>
+  <wsdl:message name="addCarToXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:addCarToXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShowAllCarsSoapIn">
+    <wsdl:part name="parameters" element="tns:ShowAllCars" />
+  </wsdl:message>
+  <wsdl:message name="ShowAllCarsSoapOut">
+    <wsdl:part name="parameters" element="tns:ShowAllCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindCarByVINSoapIn">
+    <wsdl:part name="parameters" element="tns:FindCarByVIN" />
+  </wsdl:message>
+  <wsdl:message name="FindCarByVINSoapOut">
+    <wsdl:part name="parameters" element="tns:FindCarByVINResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCarSaleSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCarSale" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCarSaleSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCarSaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCarByVinSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCarByVin" />
+  </wsdl:message>
+  <wsdl:message name="deleteCarByVinSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCarByVinResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalCarsSoldPerYearSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalCarsSoldPerYear" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalCarsSoldPerYearSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalCarsSoldPerYearResponse" />
+  </wsdl:message>
+  <wsdl:message name="FilterByParametersSoapIn">
+    <wsdl:part name="parameters" element="tns:FilterByParameters" />
+  </wsdl:message>
+  <wsdl:message name="FilterByParametersSoapOut">
+    <wsdl:part name="parameters" element="tns:FilterByParametersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSoldAndUnsoldCarsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSoldAndUnsoldCars" />
+  </wsdl:message>
+  <wsdl:message name="GetSoldAndUnsoldCarsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSoldAndUnsoldCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveUnsoldCarsSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveUnsoldCars" />
+  </wsdl:message>
+  <wsdl:message name="SaveUnsoldCarsSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveUnsoldCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchCarsByPriceRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchCarsByPriceRange" />
+  </wsdl:message>
+  <wsdl:message name="SearchCarsByPriceRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchCarsByPriceRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalculationOfProfitSoapIn">
+    <wsdl:part name="parameters" element="tns:CalculationOfProfit" />
+  </wsdl:message>
+  <wsdl:message name="CalculationOfProfitSoapOut">
+    <wsdl:part name="parameters" element="tns:CalculationOfProfitResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="addCarToXml">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add new car to Database</wsdl:documentation>
+      <wsdl:input message="tns:addCarToXmlSoapIn" />
+      <wsdl:output message="tns:addCarToXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowAllCars">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Show all Cars in Database</wsdl:documentation>
+      <wsdl:input message="tns:ShowAllCarsSoapIn" />
+      <wsdl:output message="tns:ShowAllCarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindCarByVIN">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Find a car by VINNumber</wsdl:documentation>
+      <wsdl:input message="tns:FindCarByVINSoapIn" />
+      <wsdl:output message="tns:FindCarByVINSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCarSale">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update Car by Vin number</wsdl:documentation>
+      <wsdl:input message="tns:UpdateCarSaleSoapIn" />
+      <wsdl:output message="tns:UpdateCarSaleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarByVin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete Car by Vin number</wsdl:documentation>
+      <wsdl:input message="tns:deleteCarByVinSoapIn" />
+      <wsdl:output message="tns:deleteCarByVinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalCarsSoldPerYear">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Total number of cars sold in a given year</wsdl:documentation>
+      <wsdl:input message="tns:GetTotalCarsSoldPerYearSoapIn" />
+      <wsdl:output message="tns:GetTotalCarsSoldPerYearSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FilterByParameters">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Data filtering</wsdl:documentation>
+      <wsdl:input message="tns:FilterByParametersSoapIn" />
+      <wsdl:output message="tns:FilterByParametersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSoldAndUnsoldCars">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get number of sold and unsold cars.</wsdl:documentation>
+      <wsdl:input message="tns:GetSoldAndUnsoldCarsSoapIn" />
+      <wsdl:output message="tns:GetSoldAndUnsoldCarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUnsoldCars">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Save unsold cars to an XML file</wsdl:documentation>
+      <wsdl:input message="tns:SaveUnsoldCarsSoapIn" />
+      <wsdl:output message="tns:SaveUnsoldCarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchCarsByPriceRange">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Find cars by price</wsdl:documentation>
+      <wsdl:input message="tns:SearchCarsByPriceRangeSoapIn" />
+      <wsdl:output message="tns:SearchCarsByPriceRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalculationOfProfit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Calculation of the profit of sold cars</wsdl:documentation>
+      <wsdl:input message="tns:CalculationOfProfitSoapIn" />
+      <wsdl:output message="tns:CalculationOfProfitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addCarToXml">
+      <soap:operation soapAction="http://microsoft.com/webservices/addCarToXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowAllCars">
+      <soap:operation soapAction="http://microsoft.com/webservices/ShowAllCars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCarByVIN">
+      <soap:operation soapAction="http://microsoft.com/webservices/FindCarByVIN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCarSale">
+      <soap:operation soapAction="http://microsoft.com/webservices/UpdateCarSale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarByVin">
+      <soap:operation soapAction="http://microsoft.com/webservices/deleteCarByVin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalCarsSoldPerYear">
+      <soap:operation soapAction="http://microsoft.com/webservices/GetTotalCarsSoldPerYear" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilterByParameters">
+      <soap:operation soapAction="http://microsoft.com/webservices/FilterByParameters" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSoldAndUnsoldCars">
+      <soap:operation soapAction="http://microsoft.com/webservices/GetSoldAndUnsoldCars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUnsoldCars">
+      <soap:operation soapAction="http://microsoft.com/webservices/SaveUnsoldCars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCarsByPriceRange">
+      <soap:operation soapAction="http://microsoft.com/webservices/SearchCarsByPriceRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculationOfProfit">
+      <soap:operation soapAction="http://microsoft.com/webservices/CalculationOfProfit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://microsoft.com/webservices/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addCarToXml">
+      <soap12:operation soapAction="http://microsoft.com/webservices/addCarToXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowAllCars">
+      <soap12:operation soapAction="http://microsoft.com/webservices/ShowAllCars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCarByVIN">
+      <soap12:operation soapAction="http://microsoft.com/webservices/FindCarByVIN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCarSale">
+      <soap12:operation soapAction="http://microsoft.com/webservices/UpdateCarSale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarByVin">
+      <soap12:operation soapAction="http://microsoft.com/webservices/deleteCarByVin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalCarsSoldPerYear">
+      <soap12:operation soapAction="http://microsoft.com/webservices/GetTotalCarsSoldPerYear" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FilterByParameters">
+      <soap12:operation soapAction="http://microsoft.com/webservices/FilterByParameters" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSoldAndUnsoldCars">
+      <soap12:operation soapAction="http://microsoft.com/webservices/GetSoldAndUnsoldCars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUnsoldCars">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SaveUnsoldCars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchCarsByPriceRange">
+      <soap12:operation soapAction="http://microsoft.com/webservices/SearchCarsByPriceRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculationOfProfit">
+      <soap12:operation soapAction="http://microsoft.com/webservices/CalculationOfProfit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://microsoft.com/webservices/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="https://localhost:44379/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="https://localhost:44379/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

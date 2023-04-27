@@ -1,0 +1,291 @@
+﻿<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoSalon - Úvodná stránka</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="StyleSheet.css" />
+</head>
+
+<body>
+
+    <!--! Navigačná lišta -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="index.html">AutoSalón</a>
+        <p id="add1"></p>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Domov <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">O diplomovej práci</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!--! Úvodný banner -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="alert-container"></div>
+        <div class="container">
+            <h1 class="display-4">AutoSalón</h1>
+            <p class="lead">Najväčší výber nových vozidiel na Slovensku. ASP .NET XML webová služba poskytujúca usporiadané informácie o automobiloch predajného autosalóna </p>
+            <a class="btn btn-primary btn-lg" href="show_cars.html" role="button">Automobily / Základné informácie</a>
+            <a class="btn btn-primary btn-lg" href="filter_cars.html" role="button">Vyhľadávanie a Filtrácia</a>
+            <a class="btn btn-primary btn-lg" href="sale_Info.html" role="button">Predaj / Informácie</a>
+        </div>
+    </div>
+
+
+
+    <!--! Tlacidla -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Pridať automobil</h2>
+                <p>Pridávanie nových aút do autosalónu a zapísanie špecifických parametrov do databázy ako sú (značka, typ, rok výroby atd.).</p>
+                <a class="btn btn-secondary" href="#" role="button" data-toggle="modal" data-target="#Add">Pridať</a>
+            </div>
+            <div class="col-md-4">
+                <h2>Upraviť automobil</h2>
+                <p>Úprava konkretného automobilu podľa predaja na základe VIN čísla (Vehicle Identification Number / Identifikačné číslo karosérie).</p>
+                <a class="btn btn-secondary" href="#" role="button" data-toggle="modal" data-target="#Update">Upraviť</a>
+            </div>
+            <div class="col-md-4">
+                <h2>Odstrániť automobil</h2>
+                <p>Odstránenie automobilu z databázy podľa VIN čísla (Vehicle Identification Number / Identifikačné číslo karosérie).</p>
+                <a class="btn btn-secondary" href="#" role="button" data-toggle="modal" data-target="#Delete">Odstrániť</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!--TODO: ------------------------------------ Modálne okno pre [Pridat Automobil]------------------------------------------------------------------------------------->
+
+
+    <div class="modal fade" id="Add">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!--!Hlavička modálneho okna -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-primary">Pridať Automobil</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!--! Telo modálneho okna -->
+                <div class="modal-body">
+
+                    <form id="AddCar">
+                        <div class="form-group">
+                            <label for="brand">Značka:</label>
+                            <input type="text" class="form-control" id="brand" placeholder="Zadajte značku" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Model:</label>
+                            <input type="text" class="form-control" id="model" name="model" placeholder="Zadajte model" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bodytype">Karoséria:</label>
+                            <select type="text" class="form-control" id="bodytype" name="bodytype" placeholder="Zadajte karosériu" required>
+                                <option>Sedan</option>
+                                <option>Hatchback</option>
+                                <option>Kombi</option>
+                                <option>SUV</option>
+                                <option>Kabriolet</option>
+                                <option>Roadster</option>
+                                <option>Kupé</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="yearofproduction">Rok výroby:</label>
+                            <input type="number" class="form-control" id="yearofproduction" name="yearofproduction" placeholder="Zadajte rok výroby" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vinnumber">VIN číslo:</label>
+                            <input type="text" class="form-control" id="vinnumber" name="vinnumber" placeholder="Zadajte VIN číslo" required>
+                            <small class="form-text text-muted">VIN číslo musí obsahovať 17 znakov ako napr. "1N4BL4CV3KC125638"</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="color">Farba:</label>
+                            <select type="text" class="form-control" id="color" name="color" placeholder="Zadajte karosériu" required>
+                                <option>Silver</option>
+                                <option>Black</option>
+                                <option>Blue</option>
+                                <option>Grey</option>
+                                <option>White</option>
+                                <option>Red</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="transmission">Prevodovka:</label>
+                            <select type="text" class="form-control" id="transmission" name="transmission" placeholder="Zadajte typ prevodovky" required>
+                                <option>Manuálna</option>
+                                <option>Automatická</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fuel">Palivo:</label>
+                            <select type="text" class="form-control" id="fuel" name="fuel" placeholder="Zadajte typ paliva" required>
+                                <option>Nafta</option>
+                                <option>Benzín</option>
+                                <option>Elektrina</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mileage">Počet najazdených kilometrov:</label>
+                            <input type="number" class="form-control" id="mileage" name="mileage" placeholder="Zadajte počet najazdených kilometrov" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Cena:</label>
+                            <input type="number" class="form-control" id="price" name="price" placeholder="Zadajte nákupnú cenu automobilu" required>
+                            <small class="form-text text-muted">Cena v € </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="historicalservicedata">Historické servisné údaje:</label>
+                            <input type="text" class="form-control" id="historicalservicedata" name="historicalservicedata" placeholder="Zadajte historické servisné údaje" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateofregistration">Dátum registrácie:</label>
+                            <input type="date" class="form-control" id="dateofregistration" name="dateofregistration" placeholder="Zadajte dátum registrácie" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="addCarBtn" data-toggle="tooltip" title="Pridať automobil do databázy">Pridať automobil</button>
+                        <button type="reset" class="btn btn-secondary" data-toggle="tooltip" title="Resetovať formulár">Resetovať</button>
+                    </form>
+                </div>
+
+                <!-- !Päta modálneho okna -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Zavrieť</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--TODO:------------------------------------ Modálne okno pre [Upravit Automobil]--------------------------------------------------------------------------->
+
+    <div class="modal fade" id="Update">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- !Hlavička modálneho okna -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-primary">Upraviť automobil</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!--! Telo modálneho okna -->
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="vinNumber">VIN číslo:</label>
+                            <input type="text" class="form-control" id="vinNumber" placeholder="Zadajte VIN číslo" required>
+                            <small class="form-text text-muted">VIN číslo musí obsahovať 17 znakov ako napr. "1N4BL4CV3KC125638"</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfSale">Dátum predaja:</label>
+                            <input type="date" class="form-control" id="dateOfSale" placeholder="Zadajte dátum predaja" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="salePrice">Predajná cena:</label>
+                            <input type="number" class="form-control" id="salePrice" placeholder="Zadajte cenu predaja" required>
+                            <small class="form-text text-muted">Cena v € </small>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="updateCarBtn" data-toggle="tooltip" title="Upraviť automobil v databáze">Upraviť automobil</button>
+                        <button type="reset" class="btn btn-secondary" data-toggle="tooltip" title="Resetovať formulár">Resetovať</button>
+                    </form>
+                </div>
+                <!--! Päta modálneho okna -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Zavrieť</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--TODO------------------------------------ Prvé modálne okno pre [Odstrániť Automobil]--------------------------------------------------------------------------->
+
+
+    <div class="modal fade" id="Delete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!--! Hlavička modálneho okna -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-primary">Odstrániť automobil</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!--! Telo modálneho okna -->
+                <div class="modal-body ">
+                    <form>
+                        <div class="form-group">
+                            <label for="vinNumberInput">VIN číslo:</label>
+                            <input type="text" class="form-control" id="vinNumberInput" placeholder="Zadajte VIN číslo" required>
+                            <small class="form-text text-muted">VIN číslo musí obsahovať 17 znakov ako napr. "1N4BL4CV3KC125638"</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="deleteCarBtn" data-toggle="tooltip" title="Odstrániť automobil z databázy">Odstrániť automobil</button>
+                        <button type="reset" class="btn btn-secondary" data-toggle="tooltip" title="Resetovať formulár">Resetovať</button>
+                    </form>
+                </div>
+                <!--! Päta modálneho okna -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Zavrieť</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--TODO------------------------------------ Modálne okno [o diplomovej práci]--------------------------------------------------------------------------->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title text-primary text-center" id="myModalLabel">O diplomovej práci</h1>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Názov</h3>
+                    <p>ASP .NET XML webová služba poskytujúca usporiadané informácie o automobiloch predajného autosalóna.</p>
+                    <h3>Anotácia</h3>
+                    <p>
+                        Diplomant v práci zanalyzuje možnosti použitia XML webových služieb na sledovanie parametrov automobilov predajného autosalóna vo vybratom období v elektronickom informačnom systéme a porovná ich použitie s doterajším spôsobom sledovania týchto parametrov vo vybraných predajných autosalónoch. V rámci diplomovej práce diplomant vo vybratom riadenom programovacom jazyku vytvorí ASP .NET XML webovú službu poskytujúcu prostredníctvom svojej funkcionality jej klientovi podľa vybraných kritérií usporiadané informácie o parametroch automobilov predajného autosalóna v sledovanom období, ktorými môžu byť celkový počet automobilov v tomto autosalóne na začiatku a konci sledovaného
+                        obdobia, počty a zoznamy automobilov s ich základnými dátami od jednotlivých výrobcov, vybranej značky, daného typu, počty a zoznamy automobilov s ich základnými dátami s najväčším a najmenším predajom na začiatku a konci sledovaného obdobia a iné ich parametre.
+                    </p>
+                    <h3>Poznámka</h3>
+                    <p>Študent bude finálne akceptovaný vedúcim DP až po osobnej konzultácii študenta, prostredníctvom Microsoft Teams-u, s vedúcim DP o téme DP.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Zavrieť</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--! JavaScript súbory -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

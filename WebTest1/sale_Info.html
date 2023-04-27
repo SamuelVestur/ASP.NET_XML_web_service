@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Predaje podľa karosérií a značiek</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <link rel="stylesheet" href="StyleSheet.css" />
+</head>
+<body>
+
+
+
+    <!--!Script na scrolovanie a držanie NavBar-->
+
+    <script>
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            if (scroll >= 50) {
+                $(".navbar").addClass("fixed-top"); s
+            } else {
+                $(".navbar").removeClass("fixed-top");
+            }
+        });
+
+    </script>
+
+
+    <!--! Navigačná lišta -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="sale_Info.html">Informácie o predaji </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Domov <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="show_cars.html">Automobily / Základné informácie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="filter_cars.html">Vyhľadávanie a Filtrácia</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-2 ml-2">
+        <div class="row">
+            <div class="col-md-2,3">
+
+                <!--!Vyhľadávanie podľa Karosérie -->
+
+                <div class="card card-lg mb-2 bg-dark text-white mr-5">
+                    <div class="card-body text-center">
+
+                        <h5 class="card-title font-weight-bold">Karoséria</h5>
+                        <div class="input-group mb-3">
+                            <select type="text" class="form-control" id="bodytype" name="bodytype" placeholder="Zadajte karosériu" required>
+                                <option>Sedan</option>
+                                <option>Hatchback</option>
+                                <option>Kombi</option>
+                                <option>SUV</option>
+                                <option>Kabriolet</option>
+                                <option>Roadster</option>
+                                <option>Kupé</option>
+                            </select>
+                            <button onclick="getCarSalesByBodytype()" class="btn btn-primary ml-1" type="button">Hľadať</button>
+                        </div>
+                        <div class="card-question">
+
+                            <div class="card-question-text">Predaj Automobilov za sledované obdobie</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--!Vyhľadávanie podľa Značky -->
+                <div class="card card-lg mb-2 bg-dark text-white mr-5 ">
+                    <div class="card-body  text-center">
+                        <h5 class="card-title font-weight-bold">Značka</h5>
+                        <div class="input-group mb-3">
+                            <select type="text" class="form-control" id="brand" name="brand" placeholder="Zadajte karosériu" required>
+                                <option>Audi</option>
+                                <option>Toyota</option>
+                                <option>Chevrolet</option>
+                                <option>Honda</option>
+                                <option>Mercedes-Benz</option>
+                                <option>BMW</option>
+                                <option>Tesla</option>
+                                <option>Dodge</option>
+                                <option>Ford</option>
+                                <option>Jeep</option>
+                                <option>Nissan</option>
+                                <option>Volkswagen</option>
+                            </select>
+                            <button onclick="getCarSalesByBrand()" class="btn btn-primary ml-1" type="button">Hľadať</button>
+                        </div>
+                        <div class="card-question">
+                            <i class="fa fa-question-circle" aria-hidden="true"></i>
+                            <div class="card-question-text">Predaj Automobilov za sledované obdobie</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div id="card-container"></div>
+            <div id="card-container1"></div>
+        </div>
+
+
+
+    </div>
+
+    <footer class="bg-dark text-light py-3 mt-5 fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="mb-3">Webová služba</h5>
+                    <p class="text-muted">ASP .NET XML webová služba poskytujúca usporiadané informácie o automobiloch predajného autosalóna.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-3">Kontakt</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">Adresa: 1660/8, Kežmarok, Slovensko</a></li>
+                        <li><a href="#" class="text-muted">E-mail: svestur1@student.euba.sk</a></li>
+                        <li><a href="#" class="text-muted">Telefón: +421 911 170 933</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-3">Navigácia</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted">Domov</a></li>
+                        <li><a href="show_cars.html" class="text-muted">Automobily / Základné informácie</a></li>
+                        <li><a href="filter_cars.html" class="text-muted">Vyhľadávanie a Filtrácia </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-muted text-center">
+                    <p>&copy; 2023 Autosalón. Samuel Veštúr</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+    <!-- TODO:----------------------------------------------------------  Volanie metod------------------------------------------------------------------------->
+    <!--!:------------------------------------------------------GetCountByBodytype-------------------------------------------------------------->
+    <script>
+        function getCarSalesByBodytype() {
+            var bodytype = document.getElementById("bodytype").value;
+
+            $.ajax({
+                type: "POST",
+                url: "https://localhost:44379/WebService.asmx/GetCountByBodytype",
+                data: JSON.stringify({ bodytype: bodytype }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var years = [2021, 2022, 2023];
+                    var results = response.d;
+                    var carSalesByYear = results.slice(0, years.length);
+                    var totalCarsByYear = results.slice(years.length, years.length * 2);
+
+                    $("#card-container").empty();
+
+                    var card = '<div class="card-body border-primary card border-5"> ' +
+                        '<h3 class="card-title text-primary  text-center font-weight-bold">' + bodytype + '</h3>' +
+                        '<div class="card-body pt-0 pb-0">';
+
+
+                    for (var i = 0; i < years.length; i++) {
+                        if (years[i] === 2021) {
+                            card += '<h5 class="card-title">' + years[i] + '</h5>' +
+                                '<p class="card-text border-top border-primary mb-0">Celkový počet áut: ' + carSalesByYear[i + 1] + '</p>' +
+                                '<p class="card-text">Počet predaných kusov: ' + carSalesByYear[i] + '</p>';
+
+                        }
+                    }
+
+                    for (var i = 0; i < years.length; i++) {
+                        if (years[i] === 2022) {
+                            card += '<h5 class="card-title">' + years[i] + '</h5>' +
+                                '<p class="card-text border-top border-primary  mb-0">Celkový počet áut: ' + totalCarsByYear[i - 1] + '</p>' +
+                                '<p class="card-text">Počet predaných kusov: ' + carSalesByYear[i + 1] + '</p>';
+
+                        }
+                    }
+
+                    for (var i = 0; i < years.length; i++) {
+                        if (years[i] === 2023) {
+                            card += '<h5 class="card-title">' + years[i] + '</h5>' +
+                                '<p class="card-text border-top border-primary mb-0">Celkový počet áut: ' + totalCarsByYear[i] + '</p>' +
+                                '<p class="card-text">Počet predaných kusov: ' + totalCarsByYear[i - 1] + '</p>';
+                        }
+                    }
+
+
+                    $("#card-container").append(card);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                },
+            });
+        }
+    </script>
+
+
+    <!--!:------------------------------------------------------GetCountByBrand-------------------------------------------------------------->
+    <script>
+        function getCarSalesByBrand() {
+            // Získať hodnotu z inputu s id "bodytype"
+            var brand = document.getElementById("brand").value;
+
+            $.ajax({
+                type: "POST",
+                url: "https://localhost:44379/WebService.asmx/GetCountByBrand",
+                data: JSON.stringify({ brand: brand }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var years = [2021, 2022, 2023];
+                    var results = response.d;
+                    var carSalesByYear = results.slice(0, years.length);
+                    var totalCarsByYear = results.slice(years.length, years.length * 2);
+
+                    $("#card-container1").empty();
+
+                    var card = '<div class="card-body border-primary card border-5 ml-5"> ' +
+                        '<h3 class="card-title text-primary  text-center font-weight-bold">' + brand + '</h3>' +
+                        '<div class="card-body pt-0 pb-0">';
+
+
+                    for (var i = 0; i < years.length; i++) {
+                        if (years[i] === 2021) {
+                            card += '<h5 class="card-title">' + years[i] + '</h5>' +
+                                '<p class="card-text border-top border-primary mb-0">Celkový počet áut: ' + carSalesByYear[i + 1] + '</p>' +
+                                '<p class="card-text">Počet predaných kusov: ' + carSalesByYear[i] + '</p>';
+
+                        }
+                    }
+
+                    for (var i = 0; i < years.length; i++) {
+                        if (years[i] === 2022) {
+                            card += '<h5 class="card-title">' + years[i] + '</h5>' +
+                                '<p class="card-text border-top border-primary  mb-0">Celkový počet áut: ' + totalCarsByYear[i - 1] + '</p>' +
+                                '<p class="card-text">Počet predaných kusov: ' + carSalesByYear[i + 1] + '</p>';
+
+                        }
+                    }
+
+                    for (var i = 0; i < years.length; i++) {
+                        if (years[i] === 2023) {
+                            card += '<h5 class="card-title">' + years[i] + '</h5>' +
+                                '<p class="card-text border-top border-primary mb-0">Celkový počet áut: ' + totalCarsByYear[i] + '</p>' +
+                                '<p class="card-text">Počet predaných kusov: ' + totalCarsByYear[i - 1] + '</p>';
+                        }
+                    }
+
+
+                    $("#card-container1").append(card);
+                },
+
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                },
+            });
+        }
+    </script>
+
+</body>
+
+</html>

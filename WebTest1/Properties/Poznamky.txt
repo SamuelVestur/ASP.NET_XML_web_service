@@ -1,0 +1,14 @@
+Webové metódy
+
+1. addCarToXML - pridania auto do XML súboru  - 90%
+   - Beí na klientovy  - Hotovo
+   - Pozrie sa na alert ešte - 
+   - Prida priestor na vloenie fotky - 
+---------------------------------------------------------------------------------
+2.  UpdateCarSale - Update Auta v XML súbore pomocou pridania predajnej ceny a dátumu predaja - 80% 
+	- Beí na klienotvy - Hotovo
+	- Pripravi alert pre úspešne odoslanie -  
+---------------------------------------------------------------------------------
+3. deleteCarByVin - Vymazanie Auta z XML s XML súboru pomocou VIN èísla  - 70%
+	- Beí na klientovi - Hotovo
+	- Modálne okno v modálnom okno, èi naozaj chce vymaza danı automobil - 

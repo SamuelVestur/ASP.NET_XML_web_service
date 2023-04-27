@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Filtrovanie všetkých automobilov</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="StyleSheet.css" />
+</head>
+<body>
+
+    <!--!Script na scrolovanie a držanie NavBar-->
+
+    <script>
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            if (scroll >= 50) {
+                $(".navbar").addClass("fixed-top"); s
+            } else {
+                $(".navbar").removeClass("fixed-top");
+            }
+        });
+
+    </script>
+
+
+    <!--! Navigačná lišta -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="filter_cars.html">Vyhľadávanie/Filtrovanie automobilov</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Domov <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="show_cars.html">Automobily / Základné informácie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="sale_Info.html">Predaj / Informácie</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div class="container-fluid mt-2 ml-2">
+        <div class="row">
+            <div class="col-md-2,3">
+
+                <!--!Vyhľadávanie podľa VIN Čísla -->
+
+                <div class="card card-lg  mb-2 bg-dark text-white ">
+                    <div class="card-body  text-center">
+                        <h5 class="card-title font-weight-bold">VIN číslo</h5>
+                        <div class="input-group mb-3">
+                            <input type="search" class="form-control" placeholder="Zadajte VIN číslo" aria-label="Zadajte hľadaný výraz" aria-describedby="button-addon2" id="VINNumber">
+                            <button class="btn btn-primary ml-1" type="button" id="searchBtn">Hľadať</button>
+                        </div>
+
+                    </div>
+                </div>
+
+               
+
+                <div class="card card-lg mb-2 bg-dark text-white ">
+                    <div class="card-body">
+
+                        <h5 class="card-title font-weight-bold text-center">Vyhľadávanie podľa parametrov</h5>
+                        <p id="results1"></p>
+                        <p id="results2"></p>
+                        <div class="form-group">
+                            <label class="text-left" for="bodytype">Cena od:</label>
+                            <input type="number" class="form-control" id="txtMinPrice" name="fromPrice" placeholder="Zadajte cenu " required>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-left" for="bodytype">Cena do:</label>
+                            <input type="number" class="form-control" id="txtMaxPrice" name="toPrice" placeholder="Zadajte cenu " required>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-left" for="bodytype">Status:</label>
+                            <select type="text" class="form-control" id="status" name="bodytype" placeholder="Zadajte karosériu" required>
+                                <option></option>
+                                <option>Sold</option>
+                                <option>Unsold</option>
+                            </select>
+                        </div>
+
+                        <!--!Vyhľadávanie podľa Kategorie -->
+                        <!--<h5 class="card-title font-weight-bold text-center">Katogérie</h5>-->
+                        <div class="form-group">
+                            <label class="text-left" for="bodytype">Karoséria:</label>
+                            <select type="text" class="form-control" id="bodytype" name="bodytype" placeholder="Zadajte karosériu" required>
+                                <option></option>
+                                <option>Sedan</option>
+                                <option>Hatchback</option>
+                                <option>Kombi</option>
+                                <option>SUV</option>
+                                <option>Kabriolet</option>
+                                <option>Roadster</option>
+                                <option>Kupé</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="text-left" for="color">Farba:</label>
+                            <select type="text" class="form-control" id="color" name="color" placeholder="Zadajte farbu" required>
+                                <option></option>
+                                <option>Silver</option>
+                                <option>Black</option>
+                                <option>Blue</option>
+                                <option>Grey</option>
+                                <option>White</option>
+                                <option>Red</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="text-left" for="transmission">Prevodovka:</label>
+                            <select type="text" class="form-control" id="transmission" name="transmission" placeholder="Zadajte typ prevodoky" required>
+                                <option></option>
+                                <option>Manuálna</option>
+                                <option>Automatická</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="text-left" for="bodytype">Palivo:</label>
+                            <select type="text" class="form-control" id="fuel" name="fuel" placeholder="Zadajte farbu" required>
+                                <option></option>
+                                <option>Nafta</option>
+                                <option>Benzín</option>
+                                <option>Elektrina</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary " id="searchButton1">Hľadať</button>
+                        </div>
+                    </div>
+                </div>          
+            </div>
+
+            <div class="container ">
+                <div class="row" id="carDetails">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+      <!--!------------------------------Footer--------------------------------------->
+    <footer class="bg-dark text-light py-3 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="mb-3">Webová služba</h5>
+                    <p class="text-muted">ASP .NET XML webová služba poskytujúca usporiadané informácie o automobiloch predajného autosalóna.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-3">Kontakt</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-muted">Adresa: 1660/8, Kežmarok, Slovensko</a></li>
+                        <li><a href="#" class="text-muted">E-mail: svestur1@student.euba.sk</a></li>
+                        <li><a href="#" class="text-muted">Telefón: +421 911 170 933</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-3">Navigácia</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-muted">Domov</a></li>
+                        <li><a href="show_cars.html" class="text-muted">Automobily / Základné informácie</a></li>
+                        <li><a href="sale_Info.html" class="text-muted">Predaj / Informácie</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-muted text-center">
+                    <p>&copy; 2023 Autosalón. Samuel Veštúr</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- TODO:----------------------------------------------------------  Volanie metod------------------------------------------------------------------------->
+    
+    <!--!:------------------------------------------------------Volanie metody GetCarByVINNumber-------------------------------------------------------------->
+
+    <script>
+        $(document).ready(function () {
+            $('#searchBtn').on('click', function () {
+                var VINNumber = $('#VINNumber').val();
+                $.ajax({
+                    type: "POST",
+                    url: "https://localhost:44379/WebService.asmx/GetCarByVINNumber",
+                    data: JSON.stringify({ VINNumber: VINNumber }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+
+                        if (response.d != null) {
+
+                            $("#carDetails").empty();
+                            //ak sa auto nájde, vypíšeme jeho parametre do konzolu
+                            var card = $('<div class="card-body col-md-10 border-primary card border-5 ml-5">');
+                            var closeButton = $('<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                            closeButton.click(function () {
+                                card.remove();
+                            });
+                            var cardHeader = $('<h3 class="card-title text-primary  text-center font-weight-bold">').text(response.d.Brand + ' (' + response.d.Status + ')');
+                            cardHeader.append(closeButton);
+                            var cardBody = $('<div class="card-body">');
+                            cardBody.append($('<p class="card-text  border-top border-primary">').text("Model: " + response.d.Model));
+                            cardBody.append($('<p class="card-text ">').text("Karoséria: " + response.d.Bodytype));
+                            cardBody.append($('<p class="card-text">').text("Rok výroby: " + response.d.Yearofproduction));
+                            cardBody.append($('<p class="card-text">').text("VIN Číslo: " + response.d.VINNumber));
+                            cardBody.append($('<p class="card-text">').text("Farba: " + response.d.Color));
+                            cardBody.append($('<p class="card-text">').text("Prevodovka: " + response.d.Transmission));
+                            cardBody.append($('<p class="card-text">').text("Palivo: " + response.d.Fuel));
+                            cardBody.append($('<p class="card-text">').text("Počet najazdených kilometrov: " + response.d.Mileage));
+                            cardBody.append($('<p class="card-text">').text("Nákupná cena: " + response.d.Price));
+                            cardBody.append($('<p class="card-text">').text("Historické a servisné údaje: " + response.d.Historicalservicedata));
+                            cardBody.append($('<p class="card-text">').text("Dátum registrácie: " + response.d.Dateofregistration));
+                            cardBody.append($('<p class="card-text">').text("Dátum predaja: " + response.d.Dateofsale));
+                            cardBody.append($('<p class="card-text">').text("Profit: " + response.d.Profit));
+                            card.append(cardHeader);
+                            card.append(cardBody);
+                            // pridanie karty do kontajnera na stranke
+                            $('#carDetails').empty().append(card);
+                        } else {
+                            $('#carDetails').html('<div class="alert alert-danger" role="alert">Automobil s takýmto VIN Číslom nemáme v databáze  :(</div>');
+                            setTimeout(function () {
+                                $('#carDetails').empty();
+                            }, 2500); // 3 sekundy
+                            return;
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log(xhr.status);
+                        console.log(thrownError);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+    <!--!------------------------------------------------------Volanie metody SearchCarByCategory()-------------------------------------------------------------->
+    <script>
+        $(document).ready(function () {
+            $("#searchButton1").on('click', function () {
+                var minPrice = parseFloat($("#txtMinPrice").val());
+                var maxPrice = parseFloat($("#txtMaxPrice").val());
+                var status = $('#status').val();
+                var bodytype = $('#bodytype').val();
+                var color = $('#color').val();
+                var transmission = $('#transmission').val();
+                var fuel = $('#fuel').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "https://localhost:44379/WebService.asmx/SearchCarsByCategory",
+                    data: JSON.stringify({ minPrice: minPrice, maxPrice: maxPrice, status: status, bodytype:bodytype, color:color, transmission:transmission, fuel:fuel}),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+
+                        // Clear the previous search results
+                        $('#carDetails').empty();
+
+                        if (data.d.length === 0) {
+                            $('#results2').html('<div class="alert alert-danger" role="alert">Automobil sa nenašiel :( .</div>');
+                            setTimeout(function () {
+                                $('#results2').empty();
+                            }, 3000); // 3 sekundy
+                            return;
+                        }
+
+                        // $('#results').html('<div class="alert alert-info" role="alert">Počet nájdených výsledkov: ' + data.d.length + '</div>');
+                        // Loop through each car in the returned list and create a Bootstrap card for it
+                        $.each(data.d, function (index, car) {
+                            var profitColor = car.Profit >= 0 ? 'green' : 'red';
+                            var card = $('<div class="col-md-5 mx-auto  border-primary card border-5 mb-5">');
+
+                            var closeButton = $('<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+                            closeButton.click(function () {
+                                card.remove();
+                            });
+                            $('#results1').html('<div class="alert alert-info" role="alert">Počet nájdených výsledkov: ' + data.d.length + '</div>');
+
+                            var cardHeader = $('<h3 class="card-title text-primary text-center font-weight-bold pt-3">').text(car.Brand + ' (' + car.Status + ')');
+                            cardHeader.append(closeButton);
+                            var cardBody = $('<div class="card-body pt-0">');
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('Model: ' + car.Model));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('Karoséria: ' + car.Bodytype));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('Rok výroby: ' + car.Yearofproduction));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('VIN Číslo: ' + car.VINNumber));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('Farba: ' + car.Color));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('Prevodovka: ' + car.Transmission));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('Palivo: ' + car.Fuel));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('Počet najazdených km: ' + car.Mileage));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('Nákupná cena: ' + car.Price));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('Historické a servisné dáta: ' + car.Historicalservicedata));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('Dátum registrácie: ' + car.Dateofregistration));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('Dátum predaja: ' + car.Dateofsale));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary">').text('Predajná cena: ' + car.Saleprice));
+                            cardBody.append($('<p class="card-text text-center border-top border-primary"  style = "color: ' + profitColor + ';" >').text('Profit: ' + car.Profit));
+
+                            card.append(cardHeader);
+                            card.append(cardBody);
+                            $('#carDetails').append(card);
+                        });
+
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+
+</body>
+</html>

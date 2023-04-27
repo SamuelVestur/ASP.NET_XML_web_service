@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://microsoft.com/webservices/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://microsoft.com/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/webservices/">
+      <s:element name="addCarToXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="brand" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="yearOfProduction" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="VINNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="color" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="transmission" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fuel" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="mileage" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="price" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="historicalServiceData" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dateOfRegistration" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateOfSale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="salePrice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addCarToXmlResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="showAllCars">
+        <s:complexType />
+      </s:element>
+      <s:element name="showAllCarsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="searchCarByVin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VINNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="searchCarByVinResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateCarByVin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VINNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newDateofsale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newSaleprice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateCarByVinResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="deleteCarByVin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VINNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCarByVinResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="addCarToXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:addCarToXml" />
+  </wsdl:message>
+  <wsdl:message name="addCarToXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:addCarToXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="showAllCarsSoapIn">
+    <wsdl:part name="parameters" element="tns:showAllCars" />
+  </wsdl:message>
+  <wsdl:message name="showAllCarsSoapOut">
+    <wsdl:part name="parameters" element="tns:showAllCarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchCarByVinSoapIn">
+    <wsdl:part name="parameters" element="tns:searchCarByVin" />
+  </wsdl:message>
+  <wsdl:message name="searchCarByVinSoapOut">
+    <wsdl:part name="parameters" element="tns:searchCarByVinResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateCarByVinSoapIn">
+    <wsdl:part name="parameters" element="tns:updateCarByVin" />
+  </wsdl:message>
+  <wsdl:message name="updateCarByVinSoapOut">
+    <wsdl:part name="parameters" element="tns:updateCarByVinResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCarByVinSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCarByVin" />
+  </wsdl:message>
+  <wsdl:message name="deleteCarByVinSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCarByVinResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebService1Soap">
+    <wsdl:operation name="addCarToXml">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Add new car to Database</wsdl:documentation>
+      <wsdl:input message="tns:addCarToXmlSoapIn" />
+      <wsdl:output message="tns:addCarToXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="showAllCars">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Show all Cars in Database</wsdl:documentation>
+      <wsdl:input message="tns:showAllCarsSoapIn" />
+      <wsdl:output message="tns:showAllCarsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="searchCarByVin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Search for a car based on the Vin number</wsdl:documentation>
+      <wsdl:input message="tns:searchCarByVinSoapIn" />
+      <wsdl:output message="tns:searchCarByVinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateCarByVin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update Car by Vin number</wsdl:documentation>
+      <wsdl:input message="tns:updateCarByVinSoapIn" />
+      <wsdl:output message="tns:updateCarByVinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarByVin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete Car by Vin number</wsdl:documentation>
+      <wsdl:input message="tns:deleteCarByVinSoapIn" />
+      <wsdl:output message="tns:deleteCarByVinSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addCarToXml">
+      <soap:operation soapAction="http://microsoft.com/webservices/addCarToXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="showAllCars">
+      <soap:operation soapAction="http://microsoft.com/webservices/showAllCars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchCarByVin">
+      <soap:operation soapAction="http://microsoft.com/webservices/searchCarByVin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCarByVin">
+      <soap:operation soapAction="http://microsoft.com/webservices/updateCarByVin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarByVin">
+      <soap:operation soapAction="http://microsoft.com/webservices/deleteCarByVin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addCarToXml">
+      <soap12:operation soapAction="http://microsoft.com/webservices/addCarToXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="showAllCars">
+      <soap12:operation soapAction="http://microsoft.com/webservices/showAllCars" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchCarByVin">
+      <soap12:operation soapAction="http://microsoft.com/webservices/searchCarByVin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCarByVin">
+      <soap12:operation soapAction="http://microsoft.com/webservices/updateCarByVin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCarByVin">
+      <soap12:operation soapAction="http://microsoft.com/webservices/deleteCarByVin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService1">
+    <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">
+      <soap:address location="https://localhost:44379/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebService1Soap12" binding="tns:WebService1Soap12">
+      <soap12:address location="https://localhost:44379/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
