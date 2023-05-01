@@ -24,10 +24,11 @@ obdobia, počty a zoznamy automobilov s ich základnými dátami od jednotliv�
 <div align="center">
 <p> Úvodná stránka </p>
 <img src="./welcomeScreen.png" alt="Názov obrázka">
+<img src="./welcomeScreenModela.png" alt="Názov obrázka">
 </div>
-
+<br>
 <div align="center">
-<p> Úvodná stránka </p>
+<p> Automobily / Základné informácie </p>
 <img src="./welcomeScreen.png" alt="Názov obrázka">
 </div>
 
