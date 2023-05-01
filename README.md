@@ -22,3 +22,4 @@ obdobia, počty a zoznamy automobilov s ich základnými dátami od jednotliv�
 ## Ukážka webového klienta: 
 
 
+
